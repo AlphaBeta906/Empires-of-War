@@ -6,7 +6,6 @@ Attack and Defend
 @email = dragonkingalyx@gmail.com
 """
 #VERSION 1.6
-#Made in 28/05/2020
 
 from random import choice, randint
 from time import sleep
@@ -148,8 +147,8 @@ while ofDed == False:
                     print ("You already went to alliance of theirs")
                 else:
                     yn = input(y + " wanna do a alliance Y/N")
-                if yn == "Y":
-                    allies.append(y)
+                    if yn == "Y":
+                        allies.append(y)
             elif x == "Researched from the research tree with" and z == nation_name:
                 if y in allies:
                     research_collab = input("Would you like to research with " + y + "? Y/N")
@@ -198,27 +197,27 @@ while ofDed == False:
                     print ("But they are youre religion")
                 else:
                     let = input("Would you like to change religion? Y/N")
-                if let == "Y":
-                    if religion == "Cristianity":
-                        print ("Youre religion is Islam")
-                        religion = "Islam"
-                    else:
-                        print ("Youre religion is Cristianity")
-                        religion = "Cristianity"
-                else:
-                    print ("There is a crusade!")
-                    if "Better Army" in enchants:
-                        c = randint(1, 2)
-                    else:
-                        c = randint(1, 4)
-                    if c == "1":
-                        print ("You defeated dem!")
-                    else:
-                        print ("You have to change religion by force")
+                    if let == "Y":
                         if religion == "Cristianity":
                             print ("Youre religion is Islam")
                             religion = "Islam"
                         else:
                             print ("Youre religion is Cristianity")
                             religion = "Cristianity"
+                    else:
+                        print ("There is a crusade!")
+                        if "Better Army" in enchants:
+                            c = randint(1, 2)
+                        else:
+                            c = randint(1, 4)
+                        if c == "1":
+                            print ("You defeated dem!")
+                        else:
+                            print ("You have to change religion by force")
+                            if religion == "Cristianity":
+                                print ("Youre religion is Islam")
+                                religion = "Islam"
+                            else:
+                                print ("Youre religion is Cristianity")
+                                religion = "Cristianity"
                     
