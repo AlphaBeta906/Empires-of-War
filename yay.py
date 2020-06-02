@@ -10,7 +10,7 @@ Attack and Defend
 from random import choice, randint
 from time import sleep
 print ("STARTING...")
-religionz = ["Cristianity", "Islam"]
+religionz = ["Cristianity", "Islam", "Hindu"]
 doings = ["Compiling", "Machine Code Made", "Calling Functions", "Testing Outputs", "Done"]
 enchantments = ["Better Army", "Faster Approval", "Happiness"]
 enchants = []
@@ -194,12 +194,12 @@ while ofDed == False:
                         alive_nations.append(new_tribe)
                         print (new_tribe + " is a alive nation and u lost")
             elif x == "Wants you to change religion on" and z == nation_name:
+                new_r = choice(religionz)
                 if y in religion_mates:
                     print ("But they are youre religion")
                 else:
                     let = input("Would you like to change religion? Y/N")
                     if let == "Y":
-                        new_r = choice(religionz)
                         print ("Youre religion is " + new_r)
                         religion = new_r
                     else:
@@ -212,10 +212,6 @@ while ofDed == False:
                             print ("You defeated dem!")
                         else:
                             print ("You have to change religion by force")
-                            if religion == "Cristianity":
-                                print ("Youre religion is Islam")
-                                religion = "Islam"
-                            else:
-                                print ("Youre religion is Cristianity")
-                                religion = "Cristianity"
-                    
+                            sleep(1)
+                            print ("Youre religion is " + new_r)
+                            religion = new_r
