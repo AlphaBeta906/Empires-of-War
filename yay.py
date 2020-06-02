@@ -6,6 +6,7 @@ Attack and Defend
 @email = dragonkingalyx@gmail.com
 """
 #VERSION 1.6
+#Made in 28/05/2020
 
 from random import choice, randint
 from time import sleep
