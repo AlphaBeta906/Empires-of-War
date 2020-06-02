@@ -33,13 +33,14 @@ ofDed = False
 while True:
     nation_name = input("NATION PLS")
     religion = input("RELIGION PLS")
-    if nation_name in alive_nations or religion not in religionz:
-        print ("Nation or Religion is not usable")
+    if nation_name in alive_nations:
+        print ("Nation is not usable")
     else:
         break
 stuff = ["Requested a alliance with", "Attacked", "Researched from the research tree with", "Funded a revolt on", "Wants you to change religion on"]
 allies = []
 alive_nations.append(nation_name)
+religionz.append(religion)
 ded_nations = []
 while ofDed == False:
     for turn in range(0, 15):
@@ -198,12 +199,9 @@ while ofDed == False:
                 else:
                     let = input("Would you like to change religion? Y/N")
                     if let == "Y":
-                        if religion == "Cristianity":
-                            print ("Youre religion is Islam")
-                            religion = "Islam"
-                        else:
-                            print ("Youre religion is Cristianity")
-                            religion = "Cristianity"
+                        new_r = choice(religionz)
+                        print ("Youre religion is " + new_r)
+                        religion = new_r
                     else:
                         print ("There is a crusade!")
                         if "Better Army" in enchants:
