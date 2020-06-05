@@ -12,7 +12,7 @@ from time import sleep
 print ("STARTING...")
 religionz = ["Cristianity", "Islam", "Hindu"]
 doings = ["Compiling", "Machine Code Made", "Calling Functions", "Testing Outputs", "Done"]
-enchantments = ["Better Army", "Faster Approval", "Happiness"]
+enchantments = ["Better Army", "Faster Approval", "Happiness", "Better Equipment"]
 enchants = []
 www = "Researched from the research tree with"
 index = 0
@@ -69,20 +69,33 @@ while ofDed == False:
                  SD = input("Solo or Duo")
                  if SD in solo_duo:
                      break
-                if SD == "Solo":
-                    tree = choice(enchantments)
-                    enchantments.remove(tree)
-                    enchants.append(tree)
-                    print ("You have the " + tree + " enchantment!")
-                elif SD == "Duo":
+                 if SD == "Solo":
+                    if "Better Equipment" in enchants:
+                        c = randint(1, 2)
+                    else:
+                        c = randint(1, 4)
+                    if c == "1":
+                        tree = choice(enchantments)
+                        enchantments.remove(tree)
+                        enchants.append(tree)
+                        print ("You have the " + tree + " enchantment!")
+                    else:
+                        print ("You can't research the the enchantment")
+                 elif SD == "Duo":
                      while True:
                          who = input("With who?")
-                         if who in allies:
+                         if "Better Equipment" in enchants:
+                             c = randint(1, 2)
+                         else:
+                             c = randint(1, 4)
+                         if c == "1":
                             tree = choice(enchantments)
                             enchantments.remove(tree)
                             enchants.append(tree)
                             print ("You have the " + tree + " enchantment!")
-                            break
+                         else:
+                            print ("You can't research the the enchantment")
+                         break
             elif do == "Attack":
                 while True:
                     nation_list = len(alive_nations)
