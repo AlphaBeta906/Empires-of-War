@@ -11,9 +11,12 @@ from random import choice, randint
 from time import sleep
 print ("STARTING...")
 religionz = ["Cristianity", "Islam", "Hindu"]
+money = 1000000
 doings = ["Compiling", "Machine Code Made", "Calling Functions", "Testing Outputs", "Done"]
-enchantments = ["Better Army", "Faster Approval", "Happiness", "Better Equipment"]
+enchantments = ["Better Army", "Faster Approval", "Happiness", "Better Equipment", "Rich"]
 enchants = []
+UN = []
+NWTA = []
 www = "Researched from the research tree with"
 index = 0
 day = 0
@@ -53,16 +56,29 @@ while ofDed == False:
             do = input("Attack or Allies or Research or Crusade or Skip")
             if do == "Allies":
                 a = input("Nation")
-                if a in alive_nations:
-                    if "Faster Approval" in enchants:
-                        c = randint(1, 2)
-                    else:
-                        c = randint(1, 6)
-                    if c == 1:
-                        print ("Yay, " + a + " is in youre allies")
-                        allies.append(a)
-                    else:
-                        print ("REQUEST REGECTED")
+                if nation_name in UN or NWTA:
+                    if a in alive_nations:
+                        if "Faster Approval" in enchants:
+                            c = randint(1, 2)
+                        else:
+                            c = randint(1, 4)
+                        if nation_name in UN and NWTA:
+                            where = input("UN or NWTA")
+                        else:
+                            if nation_name in UN:
+                                where = "UN"
+                            elif nation_name in NWTA:
+                                where = "NWTA"
+                        if c == 1:
+                            print ("Yay, " + a + " is in" + where)
+                            if where == "UN":
+                                UN.append(a)
+                                allies.append(a)
+                            elif where == "NWTA":
+                                NWTA.append(a)
+                                allies.append(a)
+                        else:
+                            print ("REQUEST REGECTED")
             elif do == "Research":
                 while True:
                  solo_duo = ["Solo", "Duo"]
@@ -75,10 +91,14 @@ while ofDed == False:
                     else:
                         c = randint(1, 4)
                     if c == "1":
-                        tree = choice(enchantments)
-                        enchantments.remove(tree)
-                        enchants.append(tree)
-                        print ("You have the " + tree + " enchantment!")
+                        try:
+                            tree = choice(enchantments)
+                            enchantments.remove(tree)
+                            enchants.append(tree)
+                            print ("You have the " + tree + " enchantment!")
+                            money = money - 1000
+                        except:
+                            print ("Cannot reaserch enchantment cause you have all enchantments")
                     else:
                         print ("You can't research the the enchantment")
                  elif SD == "Duo":
@@ -87,12 +107,16 @@ while ofDed == False:
                          if "Better Equipment" in enchants:
                              c = randint(1, 2)
                          else:
-                             c = randint(1, 4)
+                             c = randint(1, 3)
                          if c == "1":
-                            tree = choice(enchantments)
-                            enchantments.remove(tree)
-                            enchants.append(tree)
-                            print ("You have the " + tree + " enchantment!")
+                            try:
+                                tree = choice(enchantments)
+                                enchantments.remove(tree)
+                                enchants.append(tree)
+                                print ("You have the " + tree + " enchantment!")
+                                money = money - 500
+                            except:
+                                print ("Cannot reaserch enchantment cause you have all enchantments")
                          else:
                             print ("You can't research the the enchantment")
                          break
@@ -114,8 +138,10 @@ while ofDed == False:
                                break
                            if a in religion_mates:
                                religion_mates.remove(a)
+                           money = money + 2000
                        else:
                            print ("You failed")
+                           money = money - 2000
                            break
                     elif a == "EXIT":
                         break
@@ -138,6 +164,7 @@ while ofDed == False:
                     religion_mates.append(nation)
                 else:
                     print ("U lost")
+                    money = money + 1000
             else:
                 print ("Okay")
         else:
@@ -167,10 +194,13 @@ while ofDed == False:
                 if y in allies:
                     research_collab = input("Would you like to research with " + y + "? Y/N")
                     if research_collab == "Y":
-                        tree = choice(enchantments)
-                        enchantments.remove(tree)
-                        enchants.append(tree)
-                        print ("You have the " + tree + " enchantment!")
+                        try:
+                            tree = choice(enchantments)
+                            enchantments.remove(tree)
+                            enchants.append(tree)
+                            print ("You have the " + tree + " enchantment!")
+                        except:
+                            print ("Cannot reaserch enchantment cause you have all enchantments")
                     else:
                         print ("Ok den")
             elif x == "Attacked" and z == nation_name:
@@ -228,3 +258,4 @@ while ofDed == False:
                             sleep(1)
                             print ("Youre religion is " + new_r)
                             religion = new_r
+            
