@@ -182,6 +182,7 @@ while ofDed == False:
                     x = choice(stuff)
                     if x != a:
                         break
+            sleep(1)
             print (y + " " + x + " " + z)
             if x == "Requested a alliance with" and z == nation_name:
                 if y in allies:
